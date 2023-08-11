@@ -7,11 +7,11 @@ const searchBtn =document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
 
 async function checkweather(city){
-    const response =await fetch(apiurl+city+'&appid=${apikey}');
+    const response =await fetch(apiurl+city+`&appid=${apikey}`);
     var data = await response.json();
     console.log(data);
     document.querySelector(".city").innerHTML=data.name;
-    document.querySelector(".temp").innerHTML=math.round(data.main.temp)+"°C";
+    document.querySelector(".temp").innerHTML=Math.round(data.main.temp)+"°C";
     document.querySelector(".humidity").innerHTML=data.main.humidity+"%";
     document.querySelector(".wind").innerHTML=data.wind.speed+ "km/h";
 
@@ -27,6 +27,7 @@ async function checkweather(city){
     else if(data.weather[0].main=="Mist"){
         weatherIcon.src ="images/mist.png";
     }
+    // document.querySelector(".weather").style.display="block";
 }
 searchBtn.addEventListener("click",()=>{
     checkweather(searchBox.value);
